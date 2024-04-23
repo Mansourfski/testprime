@@ -1,18 +1,29 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+// Import PrimeNG modules
+import {ProductService} from "./service/productservice";
+import {TableModule} from "primeng/table";
+import {TableReorderDemo} from "./table-reorder-demo/table-reorder-demo.component";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot([{path: '', component: TableReorderDemo}]),
+    TableModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [TableReorderDemo],
+  bootstrap: [TableReorderDemo],
+  providers: [ProductService]
 })
-export class AppModule { }
+
+export class AppModule {
+}
